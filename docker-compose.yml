@@ -14,6 +14,7 @@ services:
 
   db:
     image: mongo:6-jammy
+    container_name: mongo-ms1
     ports:
       - '27017:27017'
     volumes:

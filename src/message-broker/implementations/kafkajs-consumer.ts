@@ -44,15 +44,15 @@ export class KafkajsConsumer implements IConsumer {
 						'Error consuming message. Adding to dead letter queue...',
 						err,
 					);
-					await this.addMessageToDlq(message);
+					await this.addMessageToDlq(message, err);
 				}
 			},
 		});
 	}
 
-	private async addMessageToDlq(message: KafkaMessage) {
-		console.log({
-			value: `message added to dlq: ${message.value.toString()}`,
+	private async addMessageToDlq(message: KafkaMessage, err: string) {
+		this.logger.error({
+			value: `problem with feedback message: ${message.value.toString()} - ${err}`,
 		});
 	}
 
