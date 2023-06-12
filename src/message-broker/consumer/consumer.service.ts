@@ -1,13 +1,9 @@
-import { Inject, Injectable, OnApplicationShutdown } from '@nestjs/common';
+import { Injectable, OnApplicationShutdown } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { ConsumerConfig, ConsumerSubscribeTopic, KafkaMessage } from 'kafkajs';
 
 import { KafkajsConsumer } from '../implementations/kafkajs-consumer';
 import { IConsumer } from '../interfaces/consumer.interface';
-import {
-	FEEDBACK_REPOSITORY,
-	FeedbackRepository,
-} from 'src/feedback/interfaces/feedback.repository';
 
 interface KafkajsConsumerOptions {
 	topic: ConsumerSubscribeTopic;
